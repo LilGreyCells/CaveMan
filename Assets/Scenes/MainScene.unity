@@ -321,7 +321,7 @@ PrefabInstance:
     - target: {fileID: -5755410852661233268, guid: 04d0fec6538d98d438b919630ca22c5d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.006
       objectReference: {fileID: 0}
     - target: {fileID: -5755410852661233268, guid: 04d0fec6538d98d438b919630ca22c5d,
         type: 3}
@@ -366,7 +366,7 @@ PrefabInstance:
     - target: {fileID: -5755410852661233268, guid: 04d0fec6538d98d438b919630ca22c5d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: -0.2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -5755410852661233268, guid: 04d0fec6538d98d438b919630ca22c5d,
         type: 3}
@@ -702,6 +702,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1796250236}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1796250238
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796250237}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5a634ec517c08b428e7dab9e1e789f6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1796250246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,5 +735,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deer: {fileID: 1796250237}
   timeCounter: 0
-  animationTime: 5
+  animationTime: 15
   rotationMax: 150

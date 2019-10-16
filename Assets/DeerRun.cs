@@ -34,15 +34,30 @@ public class DeerRun : MonoBehaviour
 
       foreach (var bone in keyframes.Keys)
       {
-        var currentdelta = (timeCounter * 10) % 9;
-        // Debug.Log(currentdelta);
+        var currentdelta = (timeCounter * 10);
+
+        Debug.Log(currentdelta);
         string[] bonearr = bone.Split('/');
         var bonetransform = GameObject.Find(bonearr[bonearr.Length - 1]).transform;
         // Debug.Log(currentdelta);
-        var fromAngle = keyframes[bone][(int)(Mathf.Floor(currentdelta))].z;
-        var toAngle = keyframes[bone][(int)(Mathf.Ceil(currentdelta))].z;
+
+        float fromAngle;
+        float toAngle;
+        if (currentdelta > 9)
+        {
+          fromAngle = keyframes[bone][keyframes[bone].Count - 1].z;
+          toAngle = keyframes[bone][0].z;
+          timeCounter = 0.22f;
+        }
+        else
+        {
+          fromAngle = keyframes[bone][(int)(Mathf.Floor(currentdelta))].z;
+          toAngle = keyframes[bone][(int)(Mathf.Ceil(currentdelta))].z;
+
+        }
+
         Debug.Log(fromAngle + "=>>>" + toAngle);
-        var res = sample.slerp(timeCounter, new Data(0, 0, 0, 0, 0, 0, 1, fromAngle), new Data(0, 0, 0, 0, 0, 0, 1, toAngle));
+        var res = sample.slerp(sample.easeinout(timeCounter), new Data(0, 0, 0, 0, 0, 0, 1, fromAngle), new Data(0, 0, 0, 0, 0, 0, 1, toAngle));
         res.Normalize();
         bonetransform.localRotation = res;
         // var finalrotation = bonetransform.rotation.ToAxisAngle();
