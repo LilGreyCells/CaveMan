@@ -24,21 +24,30 @@ public class DeerRun : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+
     if (animationTime != 0)
     {
       timeCounter += Time.deltaTime;
-      Debug.Log(timeCounter);
-      var u = sample.map(timeCounter, Mathf.Floor(timeCounter), Mathf.Ceil(timeCounter));
+      // Debug.Log(timeCounter);
+      var u = sample.map(timeCounter, Mathf.Floor(timeCounter * 10), Mathf.Ceil(timeCounter * 10));
 
 
       foreach (var bone in keyframes.Keys)
       {
-        var currentdelta = timeCounter * 10 / keyframes[bone].Count;
-        var res = sample.slerp(u, new Data(0, 0, 0, 0, 0, 0, 1, keyframes[bone][(int)(Mathf.Floor(currentdelta))].z), new Data(0, 0, 0, 0, 0, 0, 1, keyframes[bone][(int)(Mathf.Ceil(currentdelta))].z));
-        if (deer == null)
-          Debug.Log("not");
-        var bonetransform = GameObject.Find(bone).transform;
-        bonetransform.SetPositionAndRotation(bonetransform.position, res);
+        var currentdelta = (timeCounter * 10) % 9;
+        // Debug.Log(currentdelta);
+        string[] bonearr = bone.Split('/');
+        var bonetransform = GameObject.Find(bonearr[bonearr.Length - 1]).transform;
+        // Debug.Log(currentdelta);
+        var fromAngle = keyframes[bone][(int)(Mathf.Floor(currentdelta))].z;
+        var toAngle = keyframes[bone][(int)(Mathf.Ceil(currentdelta))].z;
+        Debug.Log(fromAngle + "=>>>" + toAngle);
+        var res = sample.slerp(timeCounter, new Data(0, 0, 0, 0, 0, 0, 1, fromAngle), new Data(0, 0, 0, 0, 0, 0, 1, toAngle));
+        res.Normalize();
+        bonetransform.localRotation = res;
+        // var finalrotation = bonetransform.rotation.ToAxisAngle();
+
+        // Debug.Log(bonetransform.rotation)
       }
 
       if (timeCounter > 1)
