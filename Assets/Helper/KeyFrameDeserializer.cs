@@ -7,16 +7,20 @@ public class Order { }
 public class KeyFrameDeserializer
 {
   public string file;
-  private Dictionary<string, List<Vector3>> keyframes = new Dictionary<string, List<Vector3>>();
+  private Dictionary<string, List<Vector3>> keyframesRotation = new Dictionary<string, List<Vector3>>();
+
+  private Dictionary<string, List<Vector3>> keyframesTranslation = new Dictionary<string, List<Vector3>>();
+
 
   // Start is called before the first frame update
-  public Dictionary<string, List<Vector3>> parseAnim(string animfile)
+  public new Dictionary<string, List<Vector3>>[] parseAnim(string animfile)
   {
+    bool isPosition = false;
     using (StreamReader sr = new StreamReader("C:\\Users\\Dishant Kaushik\\CaveMan\\Assets\\deerRun.anim"))
     {
       var line = "";
       List<Vector3> keyframelist = new List<Vector3>();
-      while (!((line = sr.ReadLine()).Equals("  m_PositionCurves: []")))
+      while (!((line = sr.ReadLine()).Equals("  m_ScaleCurves: []")))
       {
         // Debug.Log(line);
         if (line.Trim().StartsWith("value"))
@@ -30,12 +34,23 @@ public class KeyFrameDeserializer
         }
         if (line.Trim().StartsWith("path"))
         {
-          keyframes.Add(line.Trim().Substring(6).ToString(), keyframelist);
+          if (isPosition)
+          {
+            keyframesTranslation.Add(line.Trim().Substring(6).ToString(), keyframelist);
+          }
+          else
+          {
+            keyframesRotation.Add(line.Trim().Substring(6).ToString(), keyframelist);
+          }
           // keyframelist.Clear();
           keyframelist = new List<Vector3>();
         }
+        if (line.Equals("  m_PositionCurves:"))
+        {
+          isPosition = true;
+        }
       }
-      return keyframes;
+      return new Dictionary<string, List<Vector3>>[] { keyframesRotation, keyframesTranslation };
     }
   }
 
