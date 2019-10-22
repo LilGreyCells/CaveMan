@@ -13,45 +13,45 @@ public class KeyFrameDeserializer
 
 
   // Start is called before the first frame update
-  public new Dictionary<string, List<Vector3>>[] parseAnim(string animfile)
+  public  Dictionary<string, List<Vector3>>[] parseAnim(string animfile)
   {
     bool isPosition = false;
-    using (StreamReader sr = new StreamReader("C:\\Users\\Dishant Kaushik\\CaveMan\\Assets\\deerRun.anim"))
-    {
-      var line = "";
-      List<Vector3> keyframelist = new List<Vector3>();
-      while (!((line = sr.ReadLine()).Equals("  m_ScaleCurves: []")))
-      {
-        // Debug.Log(line);
-        if (line.Trim().StartsWith("value"))
+        using (StreamReader sr = new StreamReader(animfile))
         {
+            var line = "";
+            List<Vector3> keyframelist = new List<Vector3>();
+            while (!((line = sr.ReadLine()).Equals("  m_ScaleCurves: []")))
+            {
+                // Debug.Log(line);
+                if (line.Trim().StartsWith("value"))
+                {
 
-          string[] vector = line.Trim().Substring(7).Replace("{", "").Replace("}", "").Split(',');
-          keyframelist.Add(new Vector3(
-          float.Parse(vector[0].Substring(3)),
-          float.Parse(vector[1].Substring(3)),
-          float.Parse(vector[2].Substring(3))));
+                    string[] vector = line.Trim().Substring(7).Replace("{", "").Replace("}", "").Split(',');
+                    keyframelist.Add(new Vector3(
+                    float.Parse(vector[0].Substring(3)),
+                    float.Parse(vector[1].Substring(3)),
+                    float.Parse(vector[2].Substring(3))));
+                }
+                if (line.Trim().StartsWith("path"))
+                {
+                    if (isPosition)
+                    {
+                        keyframesTranslation.Add(line.Trim().Substring(6).ToString(), keyframelist);
+                    }
+                    else
+                    {
+                        keyframesRotation.Add(line.Trim().Substring(6).ToString(), keyframelist);
+                    }
+                    // keyframelist.Clear();
+                    keyframelist = new List<Vector3>();
+                }
+                if (line.Equals("  m_PositionCurves:"))
+                {
+                    isPosition = true;
+                }
+            }
+            return new Dictionary<string, List<Vector3>>[] { keyframesRotation, keyframesTranslation };
         }
-        if (line.Trim().StartsWith("path"))
-        {
-          if (isPosition)
-          {
-            keyframesTranslation.Add(line.Trim().Substring(6).ToString(), keyframelist);
-          }
-          else
-          {
-            keyframesRotation.Add(line.Trim().Substring(6).ToString(), keyframelist);
-          }
-          // keyframelist.Clear();
-          keyframelist = new List<Vector3>();
-        }
-        if (line.Equals("  m_PositionCurves:"))
-        {
-          isPosition = true;
-        }
-      }
-      return new Dictionary<string, List<Vector3>>[] { keyframesRotation, keyframesTranslation };
-    }
   }
 
   // Update is called once per frame

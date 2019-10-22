@@ -746,4 +746,3 @@ MonoBehaviour:
   deer: {fileID: 1796250237}
   timeCounter: 0
   animationTime: 15
-  rotationMax: 150

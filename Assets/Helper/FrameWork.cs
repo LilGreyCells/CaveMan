@@ -43,10 +43,9 @@ public class FrameWork
     return (Mathf.Sin((float)(u * Math.PI - Math.PI / 2)) + 1) / 2;
   }
 
-  public Vector3 linearInterpolation(float u, Data data1, Data data2)
+  public Vector3 linearInterpolation(float u, Vector3 from, Vector3 to)
   {
-
-    return new Vector3((data2.x - data1.x) * u + data1.x, (data2.y - data1.y) * u + data1.y, (data2.z - data1.z) * u + data1.z);
+        return (to-from)*u +from;
   }
 
   public Vector3 catmullrom(float u, Data prev, Data curr, Data curr1, Data curr2)
@@ -64,13 +63,13 @@ public class FrameWork
 
 
   }
-  public Quaternion slerp(float u, Data data1, Data data2)
+  public Quaternion slerp(float u, float axisanglefrom, float axisangleto)
   {
     //
     // Debug.Log((float)(Math.PI / 180) * data1.axisangle);
     // Debug.Log(data2);
-    Quaternion q1 = Quaternion.AngleAxis(data1.axisangle, new Vector3(data1.i, data1.j, data1.k));
-    Quaternion q2 = Quaternion.AngleAxis(data2.axisangle, new Vector3(data2.i, data2.j, data2.k));
+    Quaternion q1 = Quaternion.AngleAxis(axisanglefrom, new Vector3(0,0,1));
+    Quaternion q2 = Quaternion.AngleAxis(axisangleto, new Vector3(0,0,1));
     float theta = Mathf.Acos(Quaternion.Dot(q1, q2));
     if (theta == 0)
       return q1;
