@@ -746,7 +746,9 @@ MonoBehaviour:
   deer: {fileID: 1796250237}
   timeCounter: 0
   animationTime: 5
+  keyFramesCount: 0
   from: 0
   to: 1
   keyCount: 0
   u: 0
+  speed: 1
