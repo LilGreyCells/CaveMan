@@ -31,7 +31,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     {
         this.animationTime = animationtime;
         if (flip == true)
-            deer.transform.localScale = deer.transform.localScale * -1;
+            deer.transform.localScale = new Vector3(-deer.transform.localScale.x, deer.transform.localScale.y, deer.transform.localScale.z);
         this.animationFile = animationFile;
         this.speed = speed;
         StartCoroutine(delayed(animationdelay));
@@ -65,7 +65,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     {
         if (animateStart)
         {
-            if (animationTime != 0)
+            if (animationTime> 0)
             {
                 timeCounter += Time.deltaTime;
 
@@ -77,9 +77,10 @@ public class DeerRun : MonoBehaviour, PlayMe
 
                 if (keyCount >= keyFramesCount - 1)
                 {
+                    animationTime -= timeCounter;
                     timeCounter = 0f;
                     keyCount = 0;
-                    animationTime -= 1;
+                   
                     offsetcounter++;
                 }
                 from = keyCount;
@@ -121,6 +122,7 @@ public class DeerRun : MonoBehaviour, PlayMe
             else
             {
                 deer.transform.position = movingbonetransform.position;
+                movingbonetransform.localPosition = Vector3.zero;
                 animateStart = false;
                
             }
