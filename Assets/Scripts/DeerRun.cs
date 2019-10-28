@@ -6,7 +6,7 @@ public class DeerRun : MonoBehaviour, PlayMe
 {
     public KeyFrameDeserializer keyFrameDeserializer;
     public Dictionary<string, List<Vector3>>[] keyframes;
-    public GameObject deer;
+
     public FrameWork sample = new FrameWork();
     public float timeCounter;
     public float animationTime;
@@ -33,15 +33,25 @@ public class DeerRun : MonoBehaviour, PlayMe
         //This makes sure that our animation always ends in the same position = the initial keyframe position.
         //hence we only need to make one transition animation.
         //TLDR; animationtime will be increased or decreased a bit to accomodate transition animations.
-
+        Debug.Log(animationFile);
         this.animationTime = findClosest(animationtime, speed);
 
         if (flip == true)
-            deer.transform.localScale = new Vector3(-deer.transform.localScale.x, deer.transform.localScale.y, deer.transform.localScale.z);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         this.animationFile = animationFile;
         this.speed = speed;
         animationDelay = animationdelay;
         StartCoroutine(delayed(animationdelay));
+
+        keyFrameDeserializer = new KeyFrameDeserializer();
+        keyframes = keyFrameDeserializer.parseAnim(Application.dataPath + "//AnimationFiles//" + animationFile);
+        var enumerator = keyframes[0].Keys.GetEnumerator();
+        enumerator.MoveNext();
+        //keyFramesCount is actually the counting of the pairs of keyframes that need to be animated and not the number of keyframes themselves
+        //if there are 8 keyframes, then there will only be 7 interpolations so to speak.
+        //hence we reduce it by 1.
+        keyFramesCount = (int)keyframes[0][enumerator.Current].Count - 1;
+        p = (float)speed * 1 / keyFramesCount;
 
 
 
@@ -58,15 +68,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     // Start is called before the first frame update
     void Start()
     {
-        keyFrameDeserializer = new KeyFrameDeserializer();
-        keyframes = keyFrameDeserializer.parseAnim(Application.dataPath + "//AnimationFiles//" + animationFile);
-        var enumerator = keyframes[0].Keys.GetEnumerator();
-        enumerator.MoveNext();
-        //keyFramesCount is actually the counting of the pairs of keyframes that need to be animated and not the number of keyframes themselves
-        //if there are 8 keyframes, then there will only be 7 interpolations so to speak.
-        //hence we reduce it by 1.
-        keyFramesCount = (int)keyframes[0][enumerator.Current].Count-1;
-        p = (float)speed * 1 / keyFramesCount;
+      
 
     }
 
@@ -111,7 +113,10 @@ public class DeerRun : MonoBehaviour, PlayMe
                 {//if keycount is 7 (out of 7) then we want it to go back, which it will by resetting the time counter.
                     //First and last keyframes should be the same in rotation and position.
                     
-                    timeCounter = 0 ;
+                    //Timecounter can't be set to 0 since we need to account for the time.delta time.
+                    //So we simply add it to the timecounter once we reset.
+                    //Animation follows the same spacing. And it syncs up with the animationTime.
+                    timeCounter = Time.deltaTime;
                     
                    
                     keyCount = 0;
@@ -163,7 +168,7 @@ public class DeerRun : MonoBehaviour, PlayMe
             }
             else
             {
-                deer.transform.position = movingbonetransform.position;
+                transform.position = movingbonetransform.position;
                 movingbonetransform.localPosition = Vector3.zero;
                 animateStart = false;
                
