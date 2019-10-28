@@ -24,8 +24,8 @@ public class DeerRun : MonoBehaviour, PlayMe
     public float speed;
     public float animationDelay;
     bool animateStart;
-    string animationFile;
     Transform movingbonetransform;
+    int numberOfRuns;
     public void playMe(bool flip, float animationtime, float animationdelay, string animationFile, float speed)
     {
 
@@ -33,12 +33,15 @@ public class DeerRun : MonoBehaviour, PlayMe
         //This makes sure that our animation always ends in the same position = the initial keyframe position.
         //hence we only need to make one transition animation.
         //TLDR; animationtime will be increased or decreased a bit to accomodate transition animations.
-        Debug.Log(animationFile);
+
+        
         this.animationTime = findClosest(animationtime, speed);
+
+        //instead of counting animation time, we are now gonna count the number of runs. Which is simply the animationTime/speed
+        numberOfRuns =(int) (this.animationTime / speed);
 
         if (flip == true)
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        this.animationFile = animationFile;
         this.speed = speed;
         animationDelay = animationdelay;
         StartCoroutine(delayed(animationdelay));
@@ -51,6 +54,7 @@ public class DeerRun : MonoBehaviour, PlayMe
         //if there are 8 keyframes, then there will only be 7 interpolations so to speak.
         //hence we reduce it by 1.
         keyFramesCount = (int)keyframes[0][enumerator.Current].Count - 1;
+        Debug.Log(keyFramesCount);
         p = (float)speed * 1 / keyFramesCount;
 
 
@@ -97,9 +101,9 @@ public class DeerRun : MonoBehaviour, PlayMe
             
 
          
-            if (animationTime> 0)
+            if (numberOfRuns>0)
             {
-                animationTime -= Time.deltaTime;
+                
                
                 timeCounter += Time.deltaTime;
 
@@ -115,8 +119,9 @@ public class DeerRun : MonoBehaviour, PlayMe
                     
                     //Timecounter can't be set to 0 since we need to account for the time.delta time.
                     //So we simply add it to the timecounter once we reset.
-                    //Animation follows the same spacing. And it syncs up with the animationTime.
+                    //Animation follows the same spacing. 
                     timeCounter = Time.deltaTime;
+                    numberOfRuns--;
                     
                    
                     keyCount = 0;

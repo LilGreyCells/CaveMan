@@ -13,7 +13,7 @@ public class DriverScript : MonoBehaviour
     }
     public IEnumerator animateScene()
     {
-        deer.playMe(false, 10, 3, "deerRun.anim", 0.2f);
+        deer.playMe(false, 10, 3, "deerStandingRunning.anim", 0.4f);
         yield return null;
 
 
