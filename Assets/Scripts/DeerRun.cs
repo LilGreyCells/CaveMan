@@ -13,7 +13,6 @@ public class DeerRun : MonoBehaviour, PlayMe
     private Vector3 offset = new Vector3(0, 0, 0);
     private int offsetcounter = 0;
 
-    private int totalTime = 1;
 
     public int keyFramesCount;
     private float p = 0;
@@ -29,11 +28,19 @@ public class DeerRun : MonoBehaviour, PlayMe
     Transform movingbonetransform;
     public void playMe(bool flip, float animationtime, float animationdelay, string animationFile, float speed)
     {
-        this.animationTime = animationtime;
+
+        //Need to find the closest number that evenly divides (without remainder) with the speed. 
+        //This makes sure that our animation always ends in the same position = the initial keyframe position.
+        //hence we only need to make one transition animation.
+        //TLDR; animationtime will be increased or decreased a bit to accomodate transition animations.
+
+        this.animationTime = findClosest(animationtime, speed);
+
         if (flip == true)
             deer.transform.localScale = new Vector3(-deer.transform.localScale.x, deer.transform.localScale.y, deer.transform.localScale.z);
         this.animationFile = animationFile;
         this.speed = speed;
+        animationDelay = animationdelay;
         StartCoroutine(delayed(animationdelay));
 
 
@@ -43,7 +50,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     public IEnumerator delayed(float timedelay)
     {
         yield return new WaitForSeconds(timedelay);
-
+   
         animateStart = true;
     }
 
@@ -55,18 +62,43 @@ public class DeerRun : MonoBehaviour, PlayMe
         keyframes = keyFrameDeserializer.parseAnim(Application.dataPath + "//AnimationFiles//" + animationFile);
         var enumerator = keyframes[0].Keys.GetEnumerator();
         enumerator.MoveNext();
-        keyFramesCount = (int)keyframes[0][enumerator.Current].Count;
+        //keyFramesCount is actually the counting of the pairs of keyframes that need to be animated and not the number of keyframes themselves
+        //if there are 8 keyframes, then there will only be 7 interpolations so to speak.
+        //hence we reduce it by 1.
+        keyFramesCount = (int)keyframes[0][enumerator.Current].Count-1;
         p = (float)speed * 1 / keyFramesCount;
 
     }
 
+    public float findClosest(float m,float n)
+    {
+      
+        int q = (int)(m / n);
+       
+        float qt = q * n;
+        float qt1 = (q + 1)*n;
+     
+        if (Mathf.Abs(q - qt) < Mathf.Abs(q - qt1))
+        {
+            
+            return qt; }
+        else
+            return qt1;
+
+
+    }
     // Update is called once per frame
     void Update()
     {
         if (animateStart)
         {
+            
+
+         
             if (animationTime> 0)
             {
+                animationTime -= Time.deltaTime;
+               
                 timeCounter += Time.deltaTime;
 
                 if (timeCounter >= p * (keyCount + 1))
@@ -75,16 +107,20 @@ public class DeerRun : MonoBehaviour, PlayMe
                 }
                 u = sample.map(timeCounter, p * keyCount, p * (keyCount + 1));
 
-                if (keyCount >= keyFramesCount - 1)
-                {
-                    animationTime -= timeCounter;
-                    timeCounter = 0f;
+                if (keyCount > keyFramesCount - 1)
+                {//if keycount is 7 (out of 7) then we want it to go back, which it will by resetting the time counter.
+                    //First and last keyframes should be the same in rotation and position.
+                    
+                    timeCounter = 0 ;
+                    
+                   
                     keyCount = 0;
                    
                     offsetcounter++;
                 }
                 from = keyCount;
                 to = keyCount + 1;
+              
                 foreach (var bone in keyframes[0].Keys)
                 {
                     string[] bonearr = bone.Split('/');
@@ -92,7 +128,11 @@ public class DeerRun : MonoBehaviour, PlayMe
                     float fromAngle;
                     float toAngle;
                     fromAngle = keyframes[0][bone][from].z;
+
                     toAngle = keyframes[0][bone][to].z;
+
+                   
+                  
                     var res = sample.slerp(u, fromAngle, toAngle);
                     res.Normalize();
                     bonetransform.localRotation = res;
@@ -118,6 +158,8 @@ public class DeerRun : MonoBehaviour, PlayMe
                     bonetransform.localPosition = res;
 
                 }
+              
+               
             }
             else
             {
@@ -131,4 +173,6 @@ public class DeerRun : MonoBehaviour, PlayMe
 
 
     }
+
+  
 }

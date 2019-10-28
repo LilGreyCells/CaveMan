@@ -8,9 +8,16 @@ public class DriverScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deer.playMe(true, 7, 3, "deerRun.anim",2f);
-    }
+        StartCoroutine(animateScene());
 
+    }
+    public IEnumerator animateScene()
+    {
+        deer.playMe(false, 20, 3, "deerRun.anim", 0.2f);
+        yield return null;
+
+
+    }
     // Update is called once per frame
     void Update()
     {
