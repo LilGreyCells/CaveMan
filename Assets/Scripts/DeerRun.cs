@@ -168,14 +168,15 @@ public class DeerRun : MonoBehaviour, PlayMe
                     bonetransform.localPosition = res;
 
                 }
-              
-               
+
+                Debug.Log("still here");
             }
             else
             {
                 transform.position = movingbonetransform.position;
                 movingbonetransform.localPosition = Vector3.zero;
                 animateStart = false;
+                offsetcounter = 0;
                
             }
            
