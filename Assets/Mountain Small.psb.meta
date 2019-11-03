@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 65c0b4e01a9b19040bc5cc240847754a
+guid: 4ec662f93d60fbe41a51d0d50d5579a8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -86,7 +86,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: bricks copy
+  - name: Layer 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -94,10 +94,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 4
-      width: 343
-      height: 203
-    spriteID: bc37588ec67de4545bc06d8fa3393bd2
+      y: 427
+      width: 395
+      height: 216
+    spriteID: 57f3687a8512f9a448312bfdc2cc8ff9
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -107,32 +107,61 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -37, y: -48}
+    uvTransform: {x: 4, y: 427}
+  - name: Layer 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 806
+      height: 415
+    spriteID: b59fa6a418e71ef4f83b6cd611d6ecab
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -390, y: 4}
   platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 512
-  importedTextureHeight: 256
-  documentSize: {x: 426, y: 286}
+  importedTextureWidth: 1024
+  importedTextureHeight: 1024
+  documentSize: {x: 1200, y: 415}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
   spriteCategoryList:
     categories: []
-  textureActualWidth: 512
-  textureActualHeight: 256
+  textureActualWidth: 1024
+  textureActualHeight: 1024
   spritePackingTag: 
   resliceFromLayer: 0
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: bricks copy
-    spriteName: bricks copy
+  - name: Layer 2
+    spriteName: Layer 2
     isGroup: 0
     parentIndex: -1
-    spriteID: bc37588ec67de4545bc06d8fa3393bd2
-    layerID: 53
+    spriteID: 57f3687a8512f9a448312bfdc2cc8ff9
+    layerID: 9
+    mosaicPosition: {x: 4, y: 427}
+  - name: Layer 3
+    spriteName: Layer 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b59fa6a418e71ef4f83b6cd611d6ecab
+    layerID: 8
     mosaicPosition: {x: 4, y: 4}
   characterData:
     bones: []
@@ -140,7 +169,7 @@ ScriptedImporter:
     dimension: {x: 0, y: 0}
     characterGroups: []
   generateGOHierarchy: 0
-  textureAssetName: 4RowBricks (1) Texture
-  prefabAssetName: 4RowBricks (1) Prefab
-  spriteLibAssetName: 4RowBricks (1) Sprite Lib
+  textureAssetName: Mountain Small Texture
+  prefabAssetName: Mountain Small Prefab
+  spriteLibAssetName: Mountain Small Sprite Lib
   secondarySpriteTextures: []
