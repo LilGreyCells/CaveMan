@@ -4,7 +4,11 @@ using UnityEngine;
 
 public interface PlayMe
 {
-  void playMe(bool dirRight,float animationtime, float animationDelay,string animationFile, float speed);
+  void playMe(AnimationData anim);
     IEnumerator delayed(float timedelay);
-    float findClosest(float m, float n);
+
+
+    void addAnimation(bool dirRight, float animationtime, float animationDelay, string animationFile, float speed);
+
+    void playStart();
 }

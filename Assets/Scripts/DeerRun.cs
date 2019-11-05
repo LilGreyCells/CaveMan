@@ -26,28 +26,30 @@ public class DeerRun : MonoBehaviour, PlayMe
     bool animateStart;
     Transform movingbonetransform;
     int numberOfRuns;
-    public void playMe(bool flip, float animationtime, float animationdelay, string animationFile, float speed)
-    {
+    Queue<AnimationData> animations= new Queue<AnimationData>();
 
+
+    public void playMe(AnimationData anim)
+    {
         //Need to find the closest number that evenly divides (without remainder) with the speed. 
         //This makes sure that our animation always ends in the same position = the initial keyframe position.
         //hence we only need to make one transition animation.
         //TLDR; animationtime will be increased or decreased a bit to accomodate transition animations.
 
-        
-        this.animationTime = findClosest(animationtime, speed);
+
+        /* this.animationTime = findClosest(animationtime, speed);*/
 
         //instead of counting animation time, we are now gonna count the number of runs. Which is simply the animationTime/speed
-        numberOfRuns =(int) (this.animationTime / speed);
+        numberOfRuns = (int)(anim.animationtime / anim.speed);
 
-        if (flip == true)
+        if (anim.dirRight == true)
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        this.speed = speed;
-        animationDelay = animationdelay;
-        StartCoroutine(delayed(animationdelay));
+        this.speed = anim.speed;
+        animationDelay = anim.animationDelay;
+        StartCoroutine(delayed(anim.animationDelay));
 
         keyFrameDeserializer = new KeyFrameDeserializer();
-        keyframes = keyFrameDeserializer.parseAnim(Application.dataPath + "//AnimationFiles//" + animationFile);
+        keyframes = keyFrameDeserializer.parseAnim(Application.dataPath + "//AnimationFiles//" + anim.animationFile);
         var enumerator = keyframes[0].Keys.GetEnumerator();
         enumerator.MoveNext();
         //keyFramesCount is actually the counting of the pairs of keyframes that need to be animated and not the number of keyframes themselves
@@ -55,11 +57,17 @@ public class DeerRun : MonoBehaviour, PlayMe
         //hence we reduce it by 1.
         keyFramesCount = (int)keyframes[0][enumerator.Current].Count - 1;
         Debug.Log(keyFramesCount);
-        p = (float)speed * 1 / keyFramesCount;
+        p = (float)(anim.speed * 1 / keyFramesCount);
+    }
 
+    public void addAnimation(bool dirRight, float animationtime, float animationDelay, string animationFile, float speed)
+    {
+        animations.Enqueue(new AnimationData(dirRight, animationtime, animationDelay, animationFile, speed));
+    }
 
-
-
+    public void playStart()
+    {
+        playMe(animations.Dequeue());
     }
     public IEnumerator delayed(float timedelay)
     {
@@ -75,7 +83,7 @@ public class DeerRun : MonoBehaviour, PlayMe
       
 
     }
-
+/*
     public float findClosest(float m,float n)
     {
       
@@ -92,7 +100,7 @@ public class DeerRun : MonoBehaviour, PlayMe
             return qt1;
 
 
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {
@@ -177,6 +185,7 @@ public class DeerRun : MonoBehaviour, PlayMe
                 movingbonetransform.localPosition = Vector3.zero;
                 animateStart = false;
                 offsetcounter = 0;
+                playStart();
                
             }
            
@@ -185,5 +194,10 @@ public class DeerRun : MonoBehaviour, PlayMe
 
     }
 
-  
+   
+
+    
+     
+    
+
 }
