@@ -8,11 +8,13 @@ public class DriverScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deer.addAnimation(false, 10, 3, "deerStandingRunning.anim", 0.2f);
+        deer.addAnimation(false, 5f, 0, "deerRun.anim", 0.5f, false);
+        deer.addAnimation(false, 1f, 0, "DeerRuntoStandRun.anim", 1f, true);
+        deer.addAnimation(false, 5f, 0, "deerStandingRunning.anim", 0.5f,false);
 
 
 
-        deer.addAnimation(false, 10, 0, "deerRun.anim", 2f);
+       
         deer.playStart();
 
     }

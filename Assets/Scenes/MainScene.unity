@@ -707,6 +707,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.986082
       objectReference: {fileID: 0}
+    - target: {fileID: 7749062908059306885, guid: 04d0fec6538d98d438b919630ca22c5d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000008924846
+      objectReference: {fileID: 0}
     - target: {fileID: -9108341950500856621, guid: 04d0fec6538d98d438b919630ca22c5d,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -742,6 +747,41 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.0000001969479
       objectReference: {fileID: 0}
+    - target: {fileID: 9032036550051361401, guid: 04d0fec6538d98d438b919630ca22c5d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032036550051361401, guid: 04d0fec6538d98d438b919630ca22c5d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032036550051361401, guid: 04d0fec6538d98d438b919630ca22c5d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.10828387
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032036550051361401, guid: 04d0fec6538d98d438b919630ca22c5d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99412006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032036550051361401, guid: 04d0fec6538d98d438b919630ca22c5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032036550051361401, guid: 04d0fec6538d98d438b919630ca22c5d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.3333946
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032036550051361401, guid: 04d0fec6538d98d438b919630ca22c5d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000035494796
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -8489954637711907970, guid: 04d0fec6538d98d438b919630ca22c5d,
     type: 3}
@@ -772,6 +812,7 @@ MonoBehaviour:
   u: 0
   speed: 0
   animationDelay: 0
+  isTransitionAnimation: 0
 --- !u!1 &1767139540
 GameObject:
   m_ObjectHideFlags: 0
