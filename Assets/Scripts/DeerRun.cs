@@ -67,7 +67,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     }
 
     public void playStart()
-    {
+    {if(animations.Count>0)
         playMe(animations.Dequeue());
     }
     public IEnumerator delayed(float timedelay)

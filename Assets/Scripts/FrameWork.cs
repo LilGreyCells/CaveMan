@@ -65,11 +65,16 @@ public class FrameWork
   }
   public Quaternion slerp(float u, float axisanglefrom, float axisangleto)
   {
+        if (axisanglefrom == axisangleto)
+            return Quaternion.AngleAxis(axisanglefrom, new Vector3(0, 0, 1));
     //
     // Debug.Log((float)(Math.PI / 180) * data1.axisangle);
     // Debug.Log(data2);
-    Quaternion q1 = Quaternion.AngleAxis(axisanglefrom, new Vector3(0,0,1));
+        Quaternion q1 = Quaternion.AngleAxis(axisanglefrom, new Vector3(0,0,1));
     Quaternion q2 = Quaternion.AngleAxis(axisangleto, new Vector3(0,0,1));
+    
+
+
     float theta = Mathf.Acos(Quaternion.Dot(q1, q2));
     if (theta == 0)
       return q1;
