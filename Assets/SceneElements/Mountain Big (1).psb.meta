@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 11e063271fb45b44eba6ffce01a161fa
+guid: 16c8ba3bf2dcce84c89a89badcccb53d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -86,7 +86,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Layer 2
+  - name: Layer 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
       y: 827
       width: 789
       height: 817
-    spriteID: 8d9631586133ff04da4abc1fe7252745
+    spriteID: 7d1a20e8ced74b649a04355ba77a8e9f
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -108,7 +108,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 827}
-  - name: Layer 3
+  - name: Layer 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -119,7 +119,7 @@ ScriptedImporter:
       y: 4
       width: 808
       height: 815
-    spriteID: ddf26c61321e5b74695a94139cbfae3c
+    spriteID: 3373b25e8707d8e47987c5a1d797a27b
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -149,19 +149,19 @@ ScriptedImporter:
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Layer 1
+    spriteName: Layer 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7d1a20e8ced74b649a04355ba77a8e9f
+    layerID: 13
+    mosaicPosition: {x: 4, y: 827}
   - name: Layer 2
     spriteName: Layer 2
     isGroup: 0
     parentIndex: -1
-    spriteID: 8d9631586133ff04da4abc1fe7252745
-    layerID: 11
-    mosaicPosition: {x: 4, y: 827}
-  - name: Layer 3
-    spriteName: Layer 3
-    isGroup: 0
-    parentIndex: -1
-    spriteID: ddf26c61321e5b74695a94139cbfae3c
-    layerID: 10
+    spriteID: 3373b25e8707d8e47987c5a1d797a27b
+    layerID: 14
     mosaicPosition: {x: 4, y: 4}
   characterData:
     bones: []
@@ -169,7 +169,7 @@ ScriptedImporter:
     dimension: {x: 0, y: 0}
     characterGroups: []
   generateGOHierarchy: 0
-  textureAssetName: Mountain Big Texture
-  prefabAssetName: Mountain Big Prefab
-  spriteLibAssetName: Mountain Big Sprite Lib
+  textureAssetName: Mountain Big (1) Texture
+  prefabAssetName: Mountain Big (1) Prefab
+  spriteLibAssetName: Mountain Big (1) Sprite Lib
   secondarySpriteTextures: []

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using System;
 
 public class Order { }
 public class KeyFrameDeserializer
@@ -36,7 +36,14 @@ public class KeyFrameDeserializer
                 {
                     if (isPosition)
                     {
-                        keyframesTranslation.Add(line.Trim().Substring(6).ToString(), keyframelist);
+                        try
+                        {
+                            keyframesTranslation.Add(line.Trim().Substring(6).ToString(), keyframelist);
+                        }
+                        catch(Exception e)
+                        {
+                            Debug.Log(line);
+                        }
                     }
                     else
                     {

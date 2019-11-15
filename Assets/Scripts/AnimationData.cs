@@ -9,13 +9,15 @@ public class AnimationData
     public float animationDelay;
     public string animationFile;
     public float speed;
+    public bool isTransitionAnimation;
 
-   public AnimationData (bool dirRight, float animationtime, float animationDelay, string animationFile, float speed)
+   public AnimationData (bool dirRight, float animationtime, float animationDelay, string animationFile, float speed, bool transitionAnimation)
     {
         this.dirRight = dirRight;
         this.animationtime = animationtime;
         this.animationDelay = animationDelay;
         this.animationFile = animationFile;
         this.speed = speed;
+        this.isTransitionAnimation = transitionAnimation;
     }
 }

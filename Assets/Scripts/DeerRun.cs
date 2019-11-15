@@ -27,7 +27,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     Transform movingbonetransform;
     int numberOfRuns;
     Queue<AnimationData> animations= new Queue<AnimationData>();
-
+    public bool isTransitionAnimation;
 
     public void playMe(AnimationData anim)
     {
@@ -38,7 +38,8 @@ public class DeerRun : MonoBehaviour, PlayMe
 
 
         /* this.animationTime = findClosest(animationtime, speed);*/
-
+        this.isTransitionAnimation = anim.isTransitionAnimation;
+        print("transition" + anim.isTransitionAnimation);
         //instead of counting animation time, we are now gonna count the number of runs. Which is simply the animationTime/speed
         numberOfRuns = (int)(anim.animationtime / anim.speed);
 
@@ -60,13 +61,13 @@ public class DeerRun : MonoBehaviour, PlayMe
         p = (float)(anim.speed * 1 / keyFramesCount);
     }
 
-    public void addAnimation(bool dirRight, float animationtime, float animationDelay, string animationFile, float speed)
-    {
-        animations.Enqueue(new AnimationData(dirRight, animationtime, animationDelay, animationFile, speed));
+    public void addAnimation(bool dirRight, float animationtime, float animationDelay, string animationFile, float speed,bool isTranitionAnimation)
+    {  
+        animations.Enqueue(new AnimationData(dirRight, animationtime, animationDelay, animationFile, speed,isTranitionAnimation));
     }
 
     public void playStart()
-    {
+    {if(animations.Count>0)
         playMe(animations.Dequeue());
     }
     public IEnumerator delayed(float timedelay)
@@ -106,13 +107,13 @@ public class DeerRun : MonoBehaviour, PlayMe
     {
         if (animateStart)
         {
-            
 
-         
-            if (numberOfRuns>0)
+
+
+            if (numberOfRuns > 0)
             {
-                
-               
+
+
                 timeCounter += Time.deltaTime;
 
                 if (timeCounter >= p * (keyCount + 1))
@@ -121,13 +122,28 @@ public class DeerRun : MonoBehaviour, PlayMe
                 }
                 u = sample.map(timeCounter, p * keyCount, p * (keyCount + 1));
 
-                if (keyCount > keyFramesCount - 1)
-                {//if keycount is 7 (out of 7) then we want it to go back, which it will by resetting the time counter.
+                if (keyCount > keyFramesCount - 1   )
+                {
+
+                    //if keycount is 7 (out of 7) then we want it to go back, which it will by resetting the time counter.
                     //First and last keyframes should be the same in rotation and position.
-                    
+
                     //Timecounter can't be set to 0 since we need to account for the time.delta time.
                     //So we simply add it to the timecounter once we reset.
-                    //Animation follows the same spacing. 
+                    //Animation follows the same spacing.
+
+                    if (isTransitionAnimation && numberOfRuns >=1)
+                    {
+                        transform.position = movingbonetransform.position;
+                        movingbonetransform.localPosition = Vector3.zero;
+                        timeCounter = 0;
+                        animateStart = false;
+                        keyCount = 0;
+                        offsetcounter = 0;
+                        playStart();
+                        return;
+                    }
+
                     timeCounter = Time.deltaTime;
                     numberOfRuns--;
                     
@@ -136,11 +152,15 @@ public class DeerRun : MonoBehaviour, PlayMe
                    
                     offsetcounter++;
                 }
+                
+
                 from = keyCount;
                 to = keyCount + 1;
               
-                foreach (var bone in keyframes[0].Keys)
+                foreach (var bone in keyframes[0].Keys )
                 {
+
+
                     string[] bonearr = bone.Split('/');
                     var bonetransform = GameObject.Find(bonearr[bonearr.Length - 1]).transform;
                     float fromAngle;
@@ -185,6 +205,7 @@ public class DeerRun : MonoBehaviour, PlayMe
                 movingbonetransform.localPosition = Vector3.zero;
                 animateStart = false;
                 offsetcounter = 0;
+                timeCounter = 0;
                 playStart();
                
             }

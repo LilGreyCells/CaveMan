@@ -8,7 +8,7 @@ public interface PlayMe
     IEnumerator delayed(float timedelay);
 
 
-    void addAnimation(bool dirRight, float animationtime, float animationDelay, string animationFile, float speed);
+    void addAnimation(bool dirRight, float animationtime, float animationDelay, string animationFile, float speed,bool isTransitionAnimation);
 
     void playStart();
 }
