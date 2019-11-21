@@ -179,18 +179,30 @@ public class DeerRun : MonoBehaviour, PlayMe
                 {
                     var bonearr = bone.Split('/');
                     var bonetransform = GameObject.Find(bonearr[bonearr.Length - 1]).transform;
-                    if (movingbonetransform == null && bonearr[bonearr.Length - 1].Equals("bone_1"))
-                    {
-                        movingbonetransform = (Transform)bonetransform;
-                    }
+                  
                     Vector3 fromVector = Vector3.zero;
                     Vector3 toVector = Vector3.zero;
-                    offset = (keyframes[1][bone][keyframes[1][bone].Count - 1] - keyframes[1][bone][0]) * offsetcounter;
-                    fromVector.Set(offset.x + keyframes[1][bone][from].x, offset.y + keyframes[1][bone][from].y, offset.z + keyframes[1][bone][from].z);
-                    toVector.Set(
-                    offset.x + keyframes[1][bone][to].x,
-                    offset.y + keyframes[1][bone][to].y,
-                    offset.z + keyframes[1][bone][to].z);
+                    if (bonearr[bonearr.Length - 1].Equals("bone_1"))
+                    {
+                        movingbonetransform = (Transform)bonetransform;
+                        offset = (keyframes[1][bone][keyframes[1][bone].Count - 1] - keyframes[1][bone][0]) * offsetcounter;
+                        fromVector.Set(offset.x + keyframes[1][bone][from].x, offset.y + keyframes[1][bone][from].y, offset.z + keyframes[1][bone][from].z);
+                        toVector.Set(
+                        offset.x + keyframes[1][bone][to].x,
+                        offset.y + keyframes[1][bone][to].y,
+                        offset.z + keyframes[1][bone][to].z);
+                    }
+                    else
+                    {
+                        fromVector.Set( keyframes[1][bone][from].x,  keyframes[1][bone][from].y,  keyframes[1][bone][from].z);
+                        toVector.Set(
+                       keyframes[1][bone][to].x,
+                        keyframes[1][bone][to].y,
+                     keyframes[1][bone][to].z);
+
+                    }
+
+                  
 
                     var res = sample.linearInterpolation(u, fromVector, toVector);
                     bonetransform.localPosition = res;
