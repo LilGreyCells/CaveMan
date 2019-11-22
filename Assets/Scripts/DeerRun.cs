@@ -81,7 +81,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     // Start is called before the first frame update
     void Start()
     {
-      
+        movingbonetransform =gameObject.transform.Find("bone_1");
 
     }
 /*
@@ -184,7 +184,7 @@ public class DeerRun : MonoBehaviour, PlayMe
                     Vector3 toVector = Vector3.zero;
                     if (bonearr[bonearr.Length - 1].Equals("bone_1"))
                     {
-                        movingbonetransform = (Transform)bonetransform;
+                        
                         offset = (keyframes[1][bone][keyframes[1][bone].Count - 1] - keyframes[1][bone][0]) * offsetcounter;
                         fromVector.Set(offset.x + keyframes[1][bone][from].x, offset.y + keyframes[1][bone][from].y, offset.z + keyframes[1][bone][from].z);
                         toVector.Set(
