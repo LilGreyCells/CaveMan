@@ -19,7 +19,7 @@ public class DriverScript : MonoBehaviour
 
     deer.addAnimation(false, 5f, 0, "DeerGrazings.anim", 2f, false);
     deer.addAnimation(false, 5f, 0, "DeerWalking.anim", 2f, false);
-    deer.addAnimation(false, 5f, 0, "DeerGrazings.anim", 2f, false);
+    deer.addAnimation(false, 5f, 0, "DeerDeliberating.anim", 2f, false);
 
 
 
