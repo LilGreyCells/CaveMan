@@ -58,6 +58,7 @@ public class DeerRun : MonoBehaviour, PlayMe
         //hence we reduce it by 1.
         keyFramesCount = (int)keyframes[0][enumerator.Current].Count - 1;
         Debug.Log(keyFramesCount);
+        Debug.Log(anim.animationFile);
         p = (float)(anim.speed * 1 / keyFramesCount);
     }
 
@@ -108,11 +109,11 @@ public class DeerRun : MonoBehaviour, PlayMe
         if (animateStart)
         {
 
-
+            
 
             if (numberOfRuns > 0)
             {
-
+                Debug.Log("coming");
 
                 timeCounter += Time.deltaTime;
 
@@ -159,7 +160,7 @@ public class DeerRun : MonoBehaviour, PlayMe
               
                 foreach (var bone in keyframes[0].Keys )
                 {
-
+                    Debug.Log("coming");
 
                     string[] bonearr = bone.Split('/');
                     var bonetransform = GameObject.Find(bonearr[bonearr.Length - 1]).transform;
@@ -173,6 +174,7 @@ public class DeerRun : MonoBehaviour, PlayMe
                   
                     var res = sample.slerp(u, fromAngle, toAngle);
                     res.Normalize();
+                    Debug.Log(res);
                     bonetransform.localRotation = res;
                 }
                 foreach (var bone in keyframes[1].Keys)
@@ -209,7 +211,7 @@ public class DeerRun : MonoBehaviour, PlayMe
 
                 }
 
-                Debug.Log("still here");
+
             }
             else
             {

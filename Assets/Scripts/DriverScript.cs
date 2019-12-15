@@ -17,17 +17,19 @@ public class DriverScript : MonoBehaviour
         // deer.addAnimation(false, 5f, 0, "Caveman\\Spear Throw Up.anim", 2f, true);
         // deer.addAnimation(false, 2f, 0, "Caveman\\fitAnger.anim", 1f, true);
 
- /*       deer.addAnimation(false, 5f, 0, "DeerRunningOnTheSpot.anim", 0.2f, false);*/
-
-        deer.addAnimation(false, 5f, 0, "DCheckPyramid.anim", 1f, true);
-/*    deer.addAnimation(false, 5f, 0, "DeerWalking.anim", 2f, false);
-    deer.addAnimation(false, 5f, 0, "DeerDeliberating.anim", 2f, false);*/
+        /*       deer.addAnimation(false, 5f, 0, "DeerRunningOnTheSpot.anim", 0.2f, false);*/
 
 
+        /*
+                deer.addAnimation(false, 5f, 0, "DCheckPyramid.anim", 1f, true);*/
+        /*    deer.addAnimation(false, 5f, 0, "DeerWalking.anim", 2f, false);
+            deer.addAnimation(false, 5f, 0, "DeerDeliberating.anim", 2f, false);*/
 
 
 
-    deer.playStart();
 
-  }
+
+      //  deer.playStart();
+
+    }
 }
