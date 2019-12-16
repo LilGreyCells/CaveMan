@@ -29,6 +29,7 @@ public class DeerRun : MonoBehaviour, PlayMe
   Queue<AnimationData> animations = new Queue<AnimationData>();
   public bool isTransitionAnimation;
 
+
   public void playMe(AnimationData anim)
   {
     //Need to find the closest number that evenly divides (without remainder) with the speed. 
@@ -47,6 +48,83 @@ public class DeerRun : MonoBehaviour, PlayMe
       transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     this.speed = anim.speed;
     animationDelay = anim.animationDelay;
+
+    /**
+
+      DO EXTRAS HERE
+    */
+
+    var extras = anim.extra;
+    if (extras != null)
+    {
+      Debug.Log(extras);
+      var exArr = extras.Split(',');
+      foreach (var command in exArr)
+      {
+        var commandArr = command.Split(' ');
+        GameObject gameObject = null;
+        Moveit component = null;
+        switch (commandArr[0])
+        {
+          case "rotate":
+            gameObject = GameObject.Find(commandArr[1]);
+            var floatAngle = float.Parse(commandArr[2]);
+            Debug.Log(gameObject);
+            component = gameObject.GetComponent<Moveit>();
+            Debug.Log(component);
+            component.rotate(floatAngle, float.Parse(commandArr[3]));
+            // gameObject.transform.Rotate(0, 0, float.Parse(exArr[2]));
+            break;
+          case "detach":
+            // detach from parent 
+            // args object_to_be_detached force 
+            gameObject = GameObject.Find(commandArr[1]);
+            var localAxisForce = gameObject.transform.right;
+            component = gameObject.GetComponent<Moveit>();
+            StartCoroutine(component.addForce(localAxisForce, float.Parse(commandArr[2]), float.Parse(commandArr[3])));
+            break;
+          case "translateWithoutAnimation":
+
+            gameObject = GameObject.Find(commandArr[1]);
+            float x = 0, y = 0, z = 0;
+            x = gameObject.transform.position.x;
+            y = float.Parse(commandArr[3]);
+            z = float.Parse(commandArr[4]);
+            StartCoroutine(gameObject.GetComponent<Moveit>().translate(new Vector3(x, y, z), 0, float.Parse(commandArr[5])));
+            break;
+          case "attach":
+            // Finds the object to attach
+            var attach = new AttachToPart();
+            var objectToAttach = (GameObject)Resources.Load("prefabs/" + commandArr[1], typeof(GameObject));
+            Debug.Log(objectToAttach);
+            attach.toattach = objectToAttach;
+            attach.parent = transform.Find(commandArr[3]).gameObject;
+
+            objectToAttach = attach.attach(
+              new Vector3(
+                float.Parse(commandArr[4]),
+                float.Parse(commandArr[5]),
+                float.Parse(commandArr[6])
+              ),
+              float.Parse(commandArr[7])
+            );
+            objectToAttach.name = commandArr[2];
+            objectToAttach.AddComponent<Moveit>();
+            objectToAttach.GetComponent<Moveit>().addMass(float.Parse(commandArr[8]));
+            objectToAttach.GetComponent<SpriteRenderer>().sortingOrder = 23;
+            // Instantiate
+            // sets the transform and rotation
+            // args: objectName, parent, tx ty tz rz
+            break;
+          case "destroy":
+            objectToAttach = GameObject.Find(commandArr[1]);
+            Destroy(objectToAttach);
+            break;
+        }
+      }
+
+    }
+
     StartCoroutine(delayed(anim.animationDelay));
 
     keyFrameDeserializer = new KeyFrameDeserializer();
@@ -64,6 +142,11 @@ public class DeerRun : MonoBehaviour, PlayMe
   public void addAnimation(bool dirRight, float animationtime, float animationDelay, string animationFile, float speed, bool isTranitionAnimation)
   {
     animations.Enqueue(new AnimationData(dirRight, animationtime, animationDelay, animationFile, speed, isTranitionAnimation));
+  }
+
+  public void addAnimation(bool dirRight, float animationtime, float animationDelay, string animationFile, float speed, bool isTranitionAnimation, string extras)
+  {
+    animations.Enqueue(new AnimationData(dirRight, animationtime, animationDelay, animationFile, speed, isTranitionAnimation, extras));
   }
 
   public void playStart()
@@ -221,6 +304,7 @@ public class DeerRun : MonoBehaviour, PlayMe
         animateStart = false;
         offsetcounter = 0;
         timeCounter = 0;
+
         playStart();
 
       }
