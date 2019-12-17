@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fc1269589538dc944afe2da2183b3a54
+guid: 05246971ba25c624ba33803b474752a4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ ScriptedImporter:
       y: 4
       width: 2818
       height: 1731
-    spriteID: 3dfe897e3344b334a972035a59845d38
+    spriteID: 5bcb322a5c936a1428a9887a8ac6ab09
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -131,7 +131,7 @@ ScriptedImporter:
     spriteName: Layer 2
     isGroup: 0
     parentIndex: -1
-    spriteID: 3dfe897e3344b334a972035a59845d38
+    spriteID: 5bcb322a5c936a1428a9887a8ac6ab09
     layerID: 4
     mosaicPosition: {x: 4, y: 4}
   characterData:
@@ -140,7 +140,7 @@ ScriptedImporter:
     dimension: {x: 0, y: 0}
     characterGroups: []
   generateGOHierarchy: 0
-  textureAssetName: Colloseum Texture
-  prefabAssetName: Colloseum Prefab
-  spriteLibAssetName: Colloseum Sprite Lib
+  textureAssetName: Colloseum 1 Texture
+  prefabAssetName: Colloseum 1 Prefab
+  spriteLibAssetName: Colloseum 1 Sprite Lib
   secondarySpriteTextures: []

@@ -97,10 +97,12 @@ public class DeerRun : MonoBehaviour, PlayMe
 
             gameObject = GameObject.Find(commandArr[1]);
             float x = 0, y = 0, z = 0;
-            x = gameObject.transform.position.x;
+            x = float.Parse(commandArr[2]);
             y = float.Parse(commandArr[3]);
             z = float.Parse(commandArr[4]);
-            StartCoroutine(gameObject.GetComponent<Moveit>().translate(new Vector3(x, y, z), 0, float.Parse(commandArr[5])));
+            gameObject.transform.Translate(new Vector3(x, y, z), Space.Self);
+            // gameObject.transform.position = new Vector3(x, y, z);
+            // StartCoroutine(gameObject.GetComponent<Moveit>().translate(new Vector3(x, y, z), 0, float.Parse(commandArr[5])));
             break;
 
           case "attach":
