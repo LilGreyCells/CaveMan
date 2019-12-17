@@ -34,7 +34,9 @@ public class DriverScript : MonoBehaviour
       deer.addAnimation(false, 2f, 3, "Caveman\\fitAnger.anim", 2f, true);
       deer.addAnimation(false, 2f, 0, "Caveman\\Spear Throw Straight.anim", 2f, true, "attach spear spear5 bone_1/bone_6/bone_7 2.81 0 0 100 5,rotate spear5 -90 0.5,detach spear5 20 1 right,destroy anger1 0 0");
 
-      deer.addAnimation(false, 15f, 5, "Caveman\\runningFast.anim", 0.4f, false);
+      deer.addAnimation(false, 10f, 0, "Caveman\\runningFast.anim", 0.4f, false);
+      deer.addAnimation(false, 10f, 3, "Caveman\\runningFast.anim", 0.4f, false);
+
 
       // --------------------------------------------------
       // SCENE CHANGE
@@ -46,17 +48,17 @@ public class DriverScript : MonoBehaviour
       // SCENE CHANGE
       // --------------------------------------------------
 
-      // deer.addAnimation(false, 3f, 0, "Caveman\\runningFast.anim", 0.2f, false);
-      // deer.addAnimation(true, 3f, 3, "Caveman\\Walking.anim", 0.6f, false);
-      // deer.addAnimation(false, 3f, 0, "Caveman\\Walking.anim", 0.6f, false, "translateWithoutAnimation Caveman_1 -5 0 0 0");
-      // deer.addAnimation(false, 0.2f, 0, "Caveman\\tWalkingToThinking.anim", 0.2f, true);
-      // deer.addAnimation(false, 2f, 0, "Caveman\\thinking.anim", 2f, true, "attach exclamation exclamation1 bone_1/bone_10/bone_11 3.11 -0.82 0 -104.3 5");
-      // deer.addAnimation(true, 0.2f, 0, "Caveman\\tThinkingToLook.anim", 0.2f, true);
-      // deer.addAnimation(false, 1f, 0, "Caveman\\lookAndPoint.anim", 1f, true, "destroy exclamation1 0 0,attach anger anger1 bone_1/bone_10/bone_11 1.55 -0.05 0 0 5");
-      // deer.addAnimation(false, 4, 0, "Caveman\\lookingUp.anim", 4, true);
-      // deer.addAnimation(false, 4, 4, "Caveman\\lookingDown.anim", 4, true);
-      // deer.addAnimation(false, 2f, 0, "Caveman\\fitAnger.anim", 2f, true);
-      // deer.addAnimation(false, 3f, 0, "Caveman\\runningFast.anim", 0.2f, false);
+      deer.addAnimation(false, 6f, 8, "Caveman\\runningFast.anim", 0.2f, false);
+      deer.addAnimation(true, 3f, 3, "Caveman\\Walking.anim", 0.6f, false);
+      deer.addAnimation(false, 3f, 0, "Caveman\\Walking.anim", 0.6f, false, "translateWithoutAnimation Caveman_1 -5 0 0 0");
+      deer.addAnimation(false, 0.2f, 0, "Caveman\\tWalkingToThinking.anim", 0.2f, true);
+      deer.addAnimation(false, 2f, 0, "Caveman\\thinking.anim", 2f, true, "attach exclamation exclamation1 bone_1/bone_10/bone_11 3.11 -0.82 0 -104.3 5");
+      deer.addAnimation(true, 0.2f, 0, "Caveman\\tThinkingToLook.anim", 0.2f, true);
+      deer.addAnimation(false, 1f, 0, "Caveman\\lookAndPoint.anim", 1f, true, "destroy exclamation1 0 0,attach anger anger1 bone_1/bone_10/bone_11 1.55 -0.05 0 0 5");
+      deer.addAnimation(false, 4, 0, "Caveman\\lookingUp.anim", 4, true);
+      deer.addAnimation(false, 4, 10, "Caveman\\lookingDown.anim", 4, true);
+      deer.addAnimation(false, 2f, 0, "Caveman\\fitAnger.anim", 2f, true);
+      deer.addAnimation(false, 10f, 0, "Caveman\\runningFast.anim", 0.2f, false);
 
 
       // --------------------------------------------------
@@ -75,29 +77,54 @@ public class DriverScript : MonoBehaviour
       // deer.addAnimation(false, 1, 0, "Caveman\\goUp.anim", 1, false, "translateWithoutAnimation Caveman_1 -7.86 3 0 0");
       // deer.addAnimation(false, 1, 0, "Caveman\\goDown.anim", 1, false);
 
+      //MATRIXXXXXXX
+      deer.addAnimation(false, 2f, 10f, "Caveman\\tThrowFreeze.anim", 2f, true);
+
+      deer.addAnimation(false, 4f, 0, "Caveman\\shootGun.anim", 1f, false, "attach gunw1 gun1 bone_1/bone_8/bone_9 0 0 0 0 0,detach first 10 0 right,detach second 10 1 right,detach third 10 2 right,detach fourth 10 3 right");
+
+
     }
     else if (deer.gameObject.name.StartsWith("DEER"))
     {
-      // deer.addAnimation(false, 20f, 0, "DeerRunningOnTheSpot.anim", 0.2f, false);
-      // deer.addAnimation(false, 5f, 0, "DeerWalking.anim", 2f, false);
-      // deer.addAnimation(false, 10f, 0, "DeerDeliberating.anim", 2f, false);
 
-      // deer.addAnimation(false, 1f, 0, "DeerRunningOnTheSpot.anim", 0.2f, false);
-      // deer.addAnimation(true, 5f, 0, "DeerWalking.anim", 0.2f, false);
-      // deer.addAnimation(false, 2f, 0f,"DeerGrazings.anim",2f,false);
-      // deer.addAnimation(false, 2f, 0, "DeerWalking.anim", 2f, false);
-      // deer.addAnimation(false, 3f, 0f,"DeerGrazings.anim",2f,false);
-      // deer.addAnimation(true, 4f, 0.5f,"tGrazingToAlert.anim", 3f, true, 
-      // "attach question question1 bone_1/bone_2/bone_3/bone_4 9.49 2.4 0 -77.04 10");
-      // deer.addAnimation(false, 1f, 0f,"tAlertToLaugh.anim",0.4f,true,"destroy question1 0 0");
-      // deer.addAnimation(false,6.5f,0f,"DeerLaughing.anim",0.8f,false,
-      // "attach haha haha1 BODY 8.0467 -7.28 0 0 10");
-      // deer.addAnimation(false,6f,1.5f,"tlaughtoscoreready.anim",5,true,"destroy haha1 0 0");
-      // deer.addAnimation(false,6f,0f,"tscorereadytoscoreshow.anim",1f,true,
-      // "attach Scoreboard Scoreboard1 bone_1/bone_2/bone_7/bone_8 0.8 1 0 0 10,rotate Scoreboard1 200 1");
-      // deer.addAnimation(false,2f,0f,"fshowscore.anim",1,false);
-      // deer.addAnimation(false, 1f, 2f,"tshowscoretobackkickpos.anim",1f,true,"destroy Scoreboard1 0 0");
-      // deer.addAnimation(true, 1f, 1f,"DBackKick.anim",0.5f,true);
+      deer.addAnimation(false, 2f, 0f, "DeerGrazings.anim", 2f, false);
+      deer.addAnimation(false, 2f, 0, "DeerWalking.anim", 2f, false);
+      deer.addAnimation(false, 3f, 0f, "DeerGrazings.anim", 2f, false);
+      deer.addAnimation(true, 4f, 0.5f, "tGrazingToAlert.anim", 3f, true,
+      "attach question question1 bone_1/bone_2/bone_3/bone_4 9.49 2.4 0 -77.04 10");
+      deer.addAnimation(false, 1f, 0f, "tAlertToLaugh.anim", 0.4f, true, "destroy question1 0 0");
+      deer.addAnimation(false, 6.5f, 0f, "DeerLaughing.anim", 0.8f, false,
+      "attach haha haha1 BODY 8.0467 -7.28 0 0 10");
+      deer.addAnimation(false, 6f, 1.5f, "tlaughtoscoreready.anim", 5, true, "destroy haha1 0 0");
+      deer.addAnimation(false, 6f, 0f, "tscorereadytoscoreshow.anim", 1f, true,
+      "attach Scoreboard Scoreboard1 bone_1/bone_2/bone_7/bone_8 0.8 1 0 0 10,rotate Scoreboard1 200 1");
+      deer.addAnimation(false, 2f, 0f, "fshowscore.anim", 1, false);
+      deer.addAnimation(false, 1f, 0f, "tshowscoretobackkickpos.anim", 1f, true, "destroy Scoreboard1 0 0");
+      deer.addAnimation(true, 20f, 0f, "deerRun.anim", 0.5f, false);
+
+      // PYRAMID
+
+      deer.addAnimation(false, 5f, 1f, "deerRun.anim", 0.5f, false);
+      deer.addAnimation(false, 1f, 0f, "tRunToDeliberate.anim", 1, true);
+      deer.addAnimation(false, 3f, 0f, "DeerDeliberating.anim", 1, true);
+      deer.addAnimation(false, 1, 1, "tDeergosphinx.anim", 1f, true);
+      deer.addAnimation(false, 1, 20, "tsphinxtorunningonspot.anim", 0.7f, true);
+      deer.addAnimation(false, 0.9f, 0, "deerStandingRunning.anim", 0.3f, false);
+      deer.addAnimation(false, 5.4f, 0, "DPyramidRun.anim", 0.3f, false);
+      deer.addAnimation(false, 3, 3, "tPyramidRunToCheck.anim", 1f, true, "attach question question1 bone_1/bone_2/bone_3/bone_4 9.49 2.4 0 -77.04 10");
+      deer.addAnimation(false, 5f, 0, "DCheckPyramid.anim", 1f, true);
+      deer.addAnimation(false, 2, 1, "DFallPyramid.anim", 2f, true, "attach oops oops1 bone_1/bone_2/bone_7/bone_8 0.8 1 0 0 10,rotate oops1 100 0.4,destroy question1 0 0");
+      deer.addAnimation(false, 2f, 1f, "DeerRunningOnTheSpot.anim", 0.2f, false, "destroy oops1 0 0,translateWithoutAnimation DEER -1.5 0 -1.5 0");
+      deer.addAnimation(false, 10, 0, "deerStandingRunning.anim", 0.3f, false);
+
+      //MATRIX
+      deer.addAnimation(true, 6f, 10f, "DMatrixDodge.anim", 4f, false, "translateWithoutAnimation DEER 30 0 0 0,translateWithoutAnimation Caveman_1 5 0 0 0");
+
+
+
+
+
+
 
     }
 

@@ -44,7 +44,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     //instead of counting animation time, we are now gonna count the number of runs. Which is simply the animationTime/speed
     numberOfRuns = (int)(anim.animationtime / anim.speed);
 
-   
+
     this.speed = anim.speed;
     animationDelay = anim.animationDelay;
 
@@ -108,7 +108,7 @@ public class DeerRun : MonoBehaviour, PlayMe
             // Finds the object to attach
             var attach = new AttachToPart();
             var objectToAttach = (GameObject)Resources.Load("prefabs/" + commandArr[1], typeof(GameObject));
-            Debug.Log(objectToAttach);
+            Debug.Log(objectToAttach + "objecttoattach");
             attach.toattach = objectToAttach;
             attach.parent = transform.Find(commandArr[3]).gameObject;
 
@@ -137,8 +137,8 @@ public class DeerRun : MonoBehaviour, PlayMe
 
     }
 
-    StartCoroutine(delayed(anim.animationDelay,anim));
-    
+    StartCoroutine(delayed(anim.animationDelay, anim));
+
 
     keyFrameDeserializer = new KeyFrameDeserializer();
     keyframes = keyFrameDeserializer.parseAnim(Application.dataPath + "//AnimationFiles//" + anim.animationFile);
@@ -167,7 +167,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     if (animations.Count > 0)
       playMe(animations.Dequeue());
   }
-  public IEnumerator delayed(float timedelay,AnimationData anim)
+  public IEnumerator delayed(float timedelay, AnimationData anim)
   {
     yield return new WaitForSeconds(timedelay);
     if (anim.dirRight == true)

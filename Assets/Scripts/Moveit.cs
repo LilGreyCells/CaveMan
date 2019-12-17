@@ -59,7 +59,11 @@ public class Moveit : MonoBehaviour
     if (isPhysics)
     {
       force = Vector3.down * 9.8f * mass;
-
+      if (name.Equals("first") || name.Equals("second") || name.Equals("third") || name.Equals("fourth"))
+      {
+        mass = 1;
+        force = Vector3.zero;
+      }
       distance += velocity * Time.deltaTime;
       transform.position = distance;
       linearMomentum += force * Time.deltaTime;
