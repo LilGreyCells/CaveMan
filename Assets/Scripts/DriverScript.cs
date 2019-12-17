@@ -81,21 +81,24 @@ public class DriverScript : MonoBehaviour
       // deer.addAnimation(false, 20f, 0, "DeerRunningOnTheSpot.anim", 0.2f, false);
       // deer.addAnimation(false, 5f, 0, "DeerWalking.anim", 2f, false);
       // deer.addAnimation(false, 10f, 0, "DeerDeliberating.anim", 2f, false);
-      // deer.addAnimation(false, 1f, 0, "DeerRunningOnTheSpot.anim", 0.2f, true);
-      // deer.addAnimation(true, 5f, 0, "DeerWalking.anim", 1f, false);
 
+      // deer.addAnimation(false, 1f, 0, "DeerRunningOnTheSpot.anim", 0.2f, false);
+      // deer.addAnimation(true, 5f, 0, "DeerWalking.anim", 0.2f, false);
+      // deer.addAnimation(false, 2f, 0f,"DeerGrazings.anim",2f,false);
+      // deer.addAnimation(false, 2f, 0, "DeerWalking.anim", 2f, false);
+      // deer.addAnimation(false, 3f, 0f,"DeerGrazings.anim",2f,false);
+      // deer.addAnimation(true, 4f, 0.5f,"tGrazingToAlert.anim", 3f, true, 
+      // "attach question question1 bone_1/bone_2/bone_3/bone_4 9.49 2.4 0 -77.04 10");
+      // deer.addAnimation(false, 1f, 0f,"tAlertToLaugh.anim",0.4f,true,"destroy question1 0 0");
+      // deer.addAnimation(false,6.5f,0f,"DeerLaughing.anim",0.8f,false,
+      // "attach haha haha1 BODY 8.0467 -7.28 0 0 10");
+      // deer.addAnimation(false,6f,1.5f,"tlaughtoscoreready.anim",5,true,"destroy haha1 0 0");
+      // deer.addAnimation(false,6f,0f,"tscorereadytoscoreshow.anim",1f,true,
+      // "attach Scoreboard Scoreboard1 bone_1/bone_2/bone_7/bone_8 0.8 1 0 0 10,rotate Scoreboard1 200 1");
+      // deer.addAnimation(false,2f,0f,"fshowscore.anim",1,false);
+      // deer.addAnimation(false, 1f, 2f,"tshowscoretobackkickpos.anim",1f,true,"destroy Scoreboard1 0 0");
+      // deer.addAnimation(true, 1f, 1f,"DBackKick.anim",0.5f,true);
 
-
-      // --------------------------------------------------
-      // SCENE CHANGE
-      // --------------------------------------------------
-
-      // deer.addAnimation(false, 1, 0, "Caveman\\goUp.anim", 1, false);
-      // deer.addAnimation(false, 1, 0, "Caveman\\goDown.anim", 1, false);
-      // deer.addAnimation(false, 1, 0, "Caveman\\goUp.anim", 1, false, "translateWithoutAnimation Caveman_1 -6.86 -0.7 0 0");
-      // deer.addAnimation(false, 1, 0, "Caveman\\goDown.anim", 1, false);
-      // deer.addAnimation(false, 1, 0, "Caveman\\goUp.anim", 1, false, "translateWithoutAnimation Caveman_1 7.86 3 0 0");
-      // deer.addAnimation(false, 1, 0, "Caveman\\goDown.anim", 1, false);
     }
 
 

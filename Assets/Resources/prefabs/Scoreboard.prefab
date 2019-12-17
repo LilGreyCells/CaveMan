@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5914775811012259039
+--- !u!1 &70522868880615989
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,36 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1692608397346470443}
-  - component: {fileID: 7299331712743498854}
+  - component: {fileID: 5061030303710134278}
+  - component: {fileID: 9110274631616255352}
   m_Layer: 0
-  m_Name: spear
-  m_TagString: spear
+  m_Name: Scoreboard
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1692608397346470443
+--- !u!4 &5061030303710134278
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5914775811012259039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 70522868880615989}
+  m_LocalRotation: {x: -0.02668631, y: 0.008074774, z: -0.09012834, w: 0.99553984}
+  m_LocalPosition: {x: 1.48, y: 1.6, z: 0}
+  m_LocalScale: {x: -0.2767, y: 0.27674, z: 0.27673998}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7299331712743498854
+  m_LocalEulerAnglesHint: {x: -2.9620001, y: 1.1980001, z: -10.377001}
+--- !u!212 &9110274631616255352
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5914775811012259039}
+  m_GameObject: {fileID: 70522868880615989}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -69,13 +69,14 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 940825bdf665d76458aad5f977eb910e, type: 3}
+  m_SortingOrder: 16
+  m_Sprite: {fileID: -8188322598220737272, guid: 6c9115dca7277034e92c0bacd8347a2f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 7.27, y: 1.47}
+  m_Size: {x: 19.56, y: 21.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

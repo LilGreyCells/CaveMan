@@ -44,8 +44,7 @@ public class DeerRun : MonoBehaviour, PlayMe
     //instead of counting animation time, we are now gonna count the number of runs. Which is simply the animationTime/speed
     numberOfRuns = (int)(anim.animationtime / anim.speed);
 
-    if (anim.dirRight == true)
-      transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+   
     this.speed = anim.speed;
     animationDelay = anim.animationDelay;
 
@@ -138,7 +137,8 @@ public class DeerRun : MonoBehaviour, PlayMe
 
     }
 
-    StartCoroutine(delayed(anim.animationDelay));
+    StartCoroutine(delayed(anim.animationDelay,anim));
+    
 
     keyFrameDeserializer = new KeyFrameDeserializer();
     keyframes = keyFrameDeserializer.parseAnim(Application.dataPath + "//AnimationFiles//" + anim.animationFile);
@@ -167,10 +167,11 @@ public class DeerRun : MonoBehaviour, PlayMe
     if (animations.Count > 0)
       playMe(animations.Dequeue());
   }
-  public IEnumerator delayed(float timedelay)
+  public IEnumerator delayed(float timedelay,AnimationData anim)
   {
     yield return new WaitForSeconds(timedelay);
-
+    if (anim.dirRight == true)
+      transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
     animateStart = true;
   }
 
