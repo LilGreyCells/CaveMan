@@ -9,10 +9,10 @@ public class Moveit : MonoBehaviour
 
   private Vector3 linearMomentum, force, velocity, distance;
 
-  private bool isPhysics, translating, rotating;
+  private bool isPhysics, translating, rotating, isGoingDown;
 
   private Vector3 fromTranslation;
-
+  private Vector3 initialForceDirection;
   private Vector3 toTranslation;
   // Start is called before the first frame update
   void Start()
@@ -29,7 +29,6 @@ public class Moveit : MonoBehaviour
       float u = frameWork.map(time, 0, playtimeRotation);
       var rotation = frameWork.slerp(u, fromrotation, torotation);
       rotation.Normalize();
-      Debug.Log("U of spear " + u);
       transform.localRotation = rotation;
       // transform.rotation = rotation;
       // playtimeRotation -= Time.deltaTime;
@@ -39,7 +38,6 @@ public class Moveit : MonoBehaviour
         rotating = false;
       }
     }
-    Debug.Log("Rotation of sphere" + transform.localRotation.eulerAngles.z);
 
     if (translating)
     {
@@ -60,17 +58,28 @@ public class Moveit : MonoBehaviour
 
     if (isPhysics)
     {
-      force = Vector3.down * 9.8f;
+      force = Vector3.down * 9.8f * mass;
 
       distance += velocity * Time.deltaTime;
       transform.position = distance;
       linearMomentum += force * Time.deltaTime;
       velocity = linearMomentum / mass;
-
+      if ((velocity / velocity.magnitude) == Vector3.down && !isGoingDown)
+      {
+        isGoingDown = true;
+        if (initialForceDirection == Vector3.right)
+        {
+          rotate(90, 2);
+        }
+        else if (initialForceDirection == Vector3.up)
+        {
+          Debug.Log("Start rotating");
+          rotate(-90, 0.5f);
+        }
+      }
       var plane = GameObject.Find("Plane");
       if (Mathf.Abs(plane.transform.position.y - transform.position.y) <= 0.3f)
       {
-        Debug.Log("Zhalla");
         distance = Vector3.zero;
         velocity = Vector3.zero;
         linearMomentum = Vector3.zero;
@@ -87,8 +96,6 @@ public class Moveit : MonoBehaviour
     this.fromrotation = transform.localRotation.eulerAngles.z;
     this.torotation = angle;
 
-    Debug.Log("fromRotation " + fromrotation);
-    Debug.Log("toRotation " + torotation);
     time = 0;
   }
 
@@ -118,9 +125,10 @@ public class Moveit : MonoBehaviour
     {
       yield return new WaitForSeconds(delay);
     }
+    initialForceDirection = direction;
+    isGoingDown = false;
     distance = transform.position;
     transform.parent = null;
-    Debug.Log("Force is with you");
     isPhysics = true;
     linearMomentum = direction * amplitude;
     // yield return new WaitForSeconds(0.7f);

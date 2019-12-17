@@ -79,7 +79,17 @@ public class DeerRun : MonoBehaviour, PlayMe
             // detach from parent 
             // args object_to_be_detached force 
             gameObject = GameObject.Find(commandArr[1]);
-            var localAxisForce = gameObject.transform.right;
+            Vector3 localAxisForce = Vector3.zero;
+
+            if (commandArr[4].Equals("up"))
+            {
+              localAxisForce = Vector3.up;
+            }
+            else if (commandArr[4].Equals("right"))
+            {
+              localAxisForce = Vector3.right;
+            }
+            Debug.Log(localAxisForce);
             component = gameObject.GetComponent<Moveit>();
             StartCoroutine(component.addForce(localAxisForce, float.Parse(commandArr[2]), float.Parse(commandArr[3])));
             break;
@@ -92,6 +102,7 @@ public class DeerRun : MonoBehaviour, PlayMe
             z = float.Parse(commandArr[4]);
             StartCoroutine(gameObject.GetComponent<Moveit>().translate(new Vector3(x, y, z), 0, float.Parse(commandArr[5])));
             break;
+
           case "attach":
             // Finds the object to attach
             var attach = new AttachToPart();
