@@ -58,7 +58,7 @@ public class DriverScript : MonoBehaviour
       deer.addAnimation(false, 4, 0, "Caveman\\lookingUp.anim", 4, true);
       deer.addAnimation(false, 4, 10, "Caveman\\lookingDown.anim", 4, true);
       deer.addAnimation(false, 2f, 0, "Caveman\\fitAnger.anim", 2f, true);
-      deer.addAnimation(false, 10f, 0, "Caveman\\runningFast.anim", 0.2f, false);
+      deer.addAnimation(false, 17f, 0, "Caveman\\runningFast.anim", 0.3f, false);
 
 
       // --------------------------------------------------
@@ -78,7 +78,7 @@ public class DriverScript : MonoBehaviour
       // deer.addAnimation(false, 1, 0, "Caveman\\goDown.anim", 1, false);
 
       //MATRIXXXXXXX
-      deer.addAnimation(false, 2f, 10f, "Caveman\\tThrowFreeze.anim", 2f, true);
+      // deer.addAnimation(false, 2f, 10f, "Caveman\\tThrowFreeze.anim", 2f, true);
 
       deer.addAnimation(false, 4f, 0, "Caveman\\shootGun.anim", 1f, false, "attach gunw1 gun1 bone_1/bone_8/bone_9 0 0 0 0 0,detach first 10 0 right,detach second 10 1 right,detach third 10 2 right,detach fourth 10 3 right");
 
@@ -115,10 +115,11 @@ public class DriverScript : MonoBehaviour
       deer.addAnimation(false, 5f, 0, "DCheckPyramid.anim", 1f, true);
       deer.addAnimation(false, 2, 1, "DFallPyramid.anim", 2f, true, "attach oops oops1 bone_1/bone_2/bone_7/bone_8 0.8 1 0 0 10,rotate oops1 100 0.4,destroy question1 0 0");
       deer.addAnimation(false, 2f, 1f, "DeerRunningOnTheSpot.anim", 0.2f, false, "destroy oops1 0 0,translateWithoutAnimation DEER -1.5 0 -1.5 0");
-      deer.addAnimation(false, 10, 0, "deerStandingRunning.anim", 0.3f, false);
-
+    deer.addAnimation(false, 9, 0, "deerStandingRunning.anim", 0.1f, false);
+    deer.addAnimation(true,9f,0f,"fFinal.anim",0.2f,false);
+// , "translateWithoutAnimation DEER 30 0 0 0,translateWithoutAnimation Caveman_1 5 0 0 0"
       //MATRIX
-      deer.addAnimation(true, 6f, 10f, "DMatrixDodge.anim", 4f, false, "translateWithoutAnimation DEER 30 0 0 0,translateWithoutAnimation Caveman_1 5 0 0 0");
+      deer.addAnimation(false, 8f, 0f, "DMatrixDodge.anim", 7f, false);
 
 
 
